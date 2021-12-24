@@ -189,3 +189,6 @@ if input('your file is ready, do you want me to open it?(y/n)') == 'y':
     print()
     bin_file = open('binary.txt', 'r').read()
     print(bin_file)
+
+print('\nRead more about this project at link blow')
+print('https://github.com/amsanei/Assembler-with-python')
