@@ -19,7 +19,7 @@ python main.py c:\asm.txt
 python main.py c:\asm.txt c:\binary.txt
 ```
 input
-```
+```asm
 ORG 100 /this is start
 LDA SUB
 CMA
