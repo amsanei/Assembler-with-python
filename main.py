@@ -185,8 +185,12 @@ for i in range(len(lines)):
         LC += 1
 
 
-
 with open('binary.txt', 'w') as file:
     for key, value in table_result.items():
         key = pertty_formating("{0:b}".format(int(str(key), 16)))
         file.write(key + '\t' + value + '\n')
+
+if input('your file is ready, do you want me to open it?(y/n)') == 'y':
+    print()
+    bin_file = open('binary.txt', 'r').read()
+    print(bin_file)
