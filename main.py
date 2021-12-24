@@ -114,6 +114,7 @@ asm_file_path = get_asm_file()
 
 code = open(asm_file_path, 'r').read()
 code = comment_cleaner(code)
+code = code.upper()
 lines = code.split('\n')
 
 #Pass 1
