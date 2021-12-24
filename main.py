@@ -1,4 +1,3 @@
-import math
 import sys
 import re
 
@@ -34,9 +33,7 @@ def is_pseudo(line):
     return False
 
 def is_DEC(line):
-    if 'DEC' in line:
-        return True
-    return False
+    return 'DEC' in line
 
 def get_DEC_value(line):
     return int(line.split(' ')[1])
@@ -55,9 +52,6 @@ def hex_to_bin(num):
     num = str(num)
     return pertty_formating("{0:016b}".format(int(num, 16)))
 
-def pertty_formating(num):
-    return ' '.join([num[i:i+4] for i in range(0,len(num),4)])
-
 def is_MRI(line):
     for i in table_MRI:
         if i in line:
@@ -70,7 +64,12 @@ def is_none_MRI(line):
             return True
     return False
 
+def pertty_formating(num):
+    # adds space after every 4 character
+    return ' '.join([num[i:i+4] for i in range(0,len(num),4)])
+
 def comment_cleaner(code):
+    # cleans all the comments in asembely code
     return re.sub("\/(.*)", "", code).strip()
                 
 
@@ -117,7 +116,7 @@ code = comment_cleaner(code)
 code = code.upper()
 lines = code.split('\n')
 
-#Pass 1
+#Pass 1 is start here 
 LC = 0
 i = 0
 for i in range(len(lines)):
@@ -135,7 +134,7 @@ for i in range(len(lines)):
             LC += 1
 
 
-# Pass 2
+#Pass 2 is start here 
 LC = 0
 i = 0
 for i in range(len(lines)):
@@ -148,16 +147,13 @@ for i in range(len(lines)):
         elif is_DEC(lines[i]):
             DEC_value = get_DEC_value(lines[i])
             table_result[LC] = dec_to_bin(DEC_value)
-            # print(LC,'DEC')
             LC += 1
         elif is_HEX(lines[i]):
             HEX_value = get_HEX_value(lines[i])
             table_result[LC] = hex_to_bin(HEX_value)
-            # print(LC,'HEX')
             LC += 1
 
     elif is_MRI(lines[i]):
-        # print(LC,'MRI')
         commend = lines[i].split(' ')
         symbol = commend[0]
         symbol_code = hex_to_bin(table_MRI[symbol])
@@ -175,14 +171,12 @@ for i in range(len(lines)):
         LC += 1
 
     elif is_none_MRI(lines[i]):
-        # print(LC,'none')
         symbol = lines[i].split(' ')[0]
         table_result[LC] = hex_to_bin(table_none_MRI[symbol])
         LC += 1
     
     else:
-        # print(LC,'Err')
-        print("there's is must be a Error in your code!")
+        print("\ainvalid syntax at line", i)
         LC += 1
 
 
