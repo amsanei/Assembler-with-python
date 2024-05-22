@@ -8,8 +8,8 @@
 ```
 python main.py [source] [output]
 ```
-* `[source]` : Path to assembely source file. (REQUIRED)
-* `[output]` : Path to store program output file. i.e. binary code. If not specified, uses "binary.txt" as output file name (OPTINAL)
+* `[source]` : Path to assembly source file. (REQUIRED)
+* `[output]` : Path to store program output file. i.e. binary code. If not specified, uses "binary.txt" as output file name (OPTIONAL)
 
 ### Example
 ```
